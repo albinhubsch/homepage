@@ -1,4 +1,4 @@
-import { Gradient, LayerMaterial } from 'lamina'
+import { Depth, LayerMaterial } from 'lamina'
 import { useControls } from 'leva'
 import { FC } from 'react'
 
@@ -10,21 +10,17 @@ export const Scene: FC = () => {
 
   return (
     <>
-      {/* <mesh>
-        <boxGeometry />
-        <meshStandardMaterial color="red" />
-      </mesh> */}
-
       <mesh position={[0, 0, 0]}>
         <planeGeometry args={[16, 9]} />
 
         <LayerMaterial lighting="standard" roughness={0.8} metalness={0.5}>
-          <Gradient
+          <Depth
             colorA={colorA}
             colorB={colorB}
-            start={-8}
-            end={8}
-            axes="x"
+            alpha={1}
+            near={4}
+            far={16}
+            origin={[5, 0, 0]}
           />
         </LayerMaterial>
       </mesh>
