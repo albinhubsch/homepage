@@ -1,22 +1,38 @@
 import { useHelper } from '@react-three/drei'
+import { useControls } from 'leva'
 import { FC, useRef } from 'react'
 import { SpotLightHelper } from 'three'
 
 export const Lighting: FC = () => {
   const spotlight = useRef(null)
 
+  const { spotlightColor, spotlightIntensity } = useControls('Spotlight', {
+    spotlightColor: { value: '#e44935', label: 'Spotlight Color' },
+    spotlightIntensity: {
+      value: 10,
+      min: 0,
+      max: 100,
+      step: 1,
+      label: 'Spotlight Intensity',
+    },
+  })
+
   useHelper(spotlight, SpotLightHelper)
 
   return (
     <>
-      <pointLight position={[0, 5, 5]} intensity={0.5} />
+      <ambientLight intensity={1} />
+      {/* <pointLight position={[0, 0, 5]} intensity={0.2} /> */}
 
       <spotLight
-        intensity={0.5}
+        intensity={spotlightIntensity}
+        color={spotlightColor}
         ref={spotlight}
-        position={[2, 10, 10]}
-        angle={0.15}
-        penumbra={0.1}
+        position={[-3, -6, 4]}
+        angle={0.4}
+        penumbra={0.2}
+        distance={12}
+        decay={1.8}
       />
     </>
   )

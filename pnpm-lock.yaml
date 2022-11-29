@@ -12,6 +12,7 @@ specifiers:
   '@types/three': ^0.146.0
   '@typescript-eslint/eslint-plugin': ^5.43.0
   '@typescript-eslint/parser': ^5.43.0
+  '@use-gesture/react': ^10.2.22
   autoprefixer: ^10.4.13
   corepack: ^0.15.1
   eslint: 8.27.0
@@ -40,6 +41,7 @@ dependencies:
   '@types/node': 18.11.9
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.9
+  '@use-gesture/react': 10.2.22_react@18.2.0
   lamina: 1.1.23_xwynmv5llzsuuouxruzymqw67e
   leva: 0.9.34_biqbaboplfbrettd7655fr4n2y
   next: 13.0.3_m5sxuueb27gk6ddc5gums6vtgq

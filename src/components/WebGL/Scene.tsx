@@ -1,29 +1,15 @@
-import { Depth, LayerMaterial } from 'lamina'
-import { useControls } from 'leva'
 import { FC } from 'react'
+import { Vector3 } from 'three'
+import { PlaneBackground } from './PlaneBackground'
 
-export const Scene: FC = () => {
-  const { colorA, colorB } = useControls({
-    colorA: { value: '#ff8f00', label: 'Color A' },
-    colorB: { value: '#00a2ff', label: 'Color B' },
-  })
+interface SceneProps {
+  tiltVector: Vector3
+}
 
+export const Scene: FC<SceneProps> = ({ tiltVector }) => {
   return (
     <>
-      <mesh position={[0, 0, 0]}>
-        <planeGeometry args={[16, 9]} />
-
-        <LayerMaterial lighting="standard" roughness={0.8} metalness={0.5}>
-          <Depth
-            colorA={colorA}
-            colorB={colorB}
-            alpha={1}
-            near={4}
-            far={16}
-            origin={[5, 0, 0]}
-          />
-        </LayerMaterial>
-      </mesh>
+      <PlaneBackground tiltVector={tiltVector} />
     </>
   )
 }
